@@ -9,7 +9,7 @@ import requests
 
 #Calling to users json from jsonplaceholder repository
 response = requests.get("https://jsonplaceholder.typicode.com/todos")
-ptodos = json.loads(response.text)
+ptodos = json.loads(response.text) #encoding
 
 #type of 'ptodos' variable
 type(ptodos)
@@ -27,7 +27,7 @@ for todo in ptodos:
 RDD = sc.parallelize(ptodos)
 
 #We can access to an element of the list to filter a specific result
-ptodosTrue = RDD.filter(lambda todo: todo["completed"]).map(lambda js: json.dumps(js)) #encoding 'ptodosTrue' 
+ptodosTrue = RDD.filter(lambda todo: todo["completed"]).map(lambda js: json.dumps(js)) #decoding 'ptodosTrue' 
 
 
 # Save 'ptodos' in to a file
